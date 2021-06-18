@@ -11,3 +11,5 @@ The starter project has some HTML and CSS styling to display a static version of
 To get started, open `js/app.js` and start building out the app's functionality
 
 For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+this project presented to Udacity and egFWD initiative for the front end web development professional track.
+and this project is actually a multi-section landing page, with a dynamically updating navigational menu based on the amount of content that is added to the page.
