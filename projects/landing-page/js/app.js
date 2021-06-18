@@ -1,57 +1,65 @@
-/**
- * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- * 
- * Dependencies: None
- * 
- * JS Version: ES2015/ES6
- * 
- * JS Standard: ESlint
- * 
-*/
+// Define Global Variables
 
-/**
- * Define Global Variables
- * 
-*/
+var sections = Array.from(document.querySelectorAll('section'));
+var menu = document.getElementById('navbar__list');
 
+// End global variables section
 
-/**
- * End Global Variables
- * Start Helper Functions
- * 
-*/
+// Starting function to implement and create menu bar or navbar
 
+var sectionName, section, sectionLink;
 
+function createListItems() {
+  "use strict";
+  for (section of sections) {
+    sectionName = section.getAttribute('data_nav');
+    sectionLink = section.getAttribute('id');
 
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
+    //create an item for everyone
+    var listItem = document.createElement('li');
 
-// build the nav
+    // add text to this item that has just created
+
+    listItem.innerHTML = '<a class='menu__link' href='#$(sectionLink)'>$(sectionName)</a>';
+
+    // appen the list item to the nav bar or menu
+    menu.appendChild(listItem);
+
+  }
+
+}
 
 
-// Add class 'active' to section when near top of viewport
+
+// second function  --- determine if section in viewport or not
+
+function sectionInViewPort(elem) {
+  let sectionPosition = elem.getBoundingClientRect();
+  return (sectionPosition.top >= 0);
+}
+
+//third function
 
 
-// Scroll to anchor ID using scrollTO event
+function toggleActivesection() {
+
+  for (section of sections) {
+
+    if (sectionInViewPort(section)) {
+      if (!section.classList.contains('active__class')) {
+        section.classList.add('active__class');
+      }
+    } else {
+      section.classList.remove('active__class');
+    }
+  }
+}
 
 
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
 
-// Build menu 
+// calling functions
 
-// Scroll to section on link click
+createListItems();
 
-// Set sections as active
-
+document.addEventListener('scroll', toggleActivesection);
 
